@@ -65,6 +65,12 @@ class BusyState(State):
                 elif action == 'restart':
                     no_answer_needed = True
                     player.restart()    # TODO not implemented!
+                elif action == 'next':
+                    no_answer_needed = True
+                    player.next()    # TODO not implemented!
+                elif action == 'previous':
+                    no_answer_needed = True
+                    player.previous()    # TODO not implemented!                    
                 else:
                     logger.error('Unknown media action: %s', action)
 
@@ -90,12 +96,13 @@ class BusyState(State):
 
             # answer to "play ..."
             # {'identifier': 'ytd-04854XqcfCY', 'answer': 'Playing Queen -  We Are The Champions (Official Video)'}
+
             if 'identifier' in reply.keys():
                 url = reply['identifier']
                 if url[:3] == 'ytd':
                     player.playytb(url[4:])
-                else:
-                    player.play(url[6:])
+                else if url[:4] == 'file':
+                    player.play_queue(url) #play_queue to be implement in player
                 self.transition(self.allowedStateTransitions.get('idle'))
 
             if 'table' in reply.keys():
