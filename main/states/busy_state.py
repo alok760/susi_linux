@@ -70,7 +70,7 @@ class BusyState(State):
                     player.next()    # TODO not implemented!
                 elif action == 'previous':
                     no_answer_needed = True
-                    player.previous()    # TODO not implemented!                    
+                    player.previous()    # TODO not implemented!
                 else:
                     logger.error('Unknown media action: %s', action)
 
@@ -102,6 +102,7 @@ class BusyState(State):
                 if url[:3] == 'ytd':
                     player.playytb(url[4:])
                 else if url[:4] == 'file':
+                    audio_list = url.split()
                     player.play_queue(url) #play_queue to be implement in player
                 self.transition(self.allowedStateTransitions.get('idle'))
 

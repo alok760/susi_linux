@@ -43,6 +43,11 @@ class Player():
             send_request('play?mrl=' + mrl)
         else:
             vlcplayer.play(mrl)
+    def play_queue(self, audio_list, mode = None):
+        if (mode == 'server') or ((mode is None) and (self.mode == 'server')):
+            send_request('playqueue?mrl=' + audio_list)
+        else:
+            vlcplayer.play_queue(audio_list)
     def pause(self, mode = None):
         if (mode == 'server') or ((mode is None) and (self.mode == 'server')):
             send_request('pause')
@@ -96,4 +101,3 @@ class Player():
 
 
 player = Player()
-
