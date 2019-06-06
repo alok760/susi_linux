@@ -95,7 +95,7 @@ class BusyState(State):
                 if url[:3] == 'ytd':
                     player.playytb(url[4:])
                 else:
-                    player.play(url[6:])
+                    player.play(url)
                 self.transition(self.allowedStateTransitions.get('idle'))
 
             if 'table' in reply.keys():
