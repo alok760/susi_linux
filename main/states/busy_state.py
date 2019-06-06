@@ -65,6 +65,12 @@ class BusyState(State):
                 elif action == 'restart':
                     no_answer_needed = True
                     player.restart()    # TODO not implemented!
+                elif action == 'next':
+                    no_answer_needed = True
+                    player.next()    # TODO not implemented!
+                elif action == 'previous':
+                    no_answer_needed = True
+                    player.previous()    # TODO not implemented!
                 else:
                     logger.error('Unknown media action: %s', action)
 
